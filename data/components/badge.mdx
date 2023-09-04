@@ -1,0 +1,45 @@
+---
+metaTitle: Badge - Current UI
+metaDescription: Displays a badge or a component that looks like a badge
+name: Badge
+---
+
+<FlexGroup>
+  # Badge
+
+  <Description
+    hasRadixLink={false}
+  >
+    Displays a badge or a component that looks like a badge
+  </Description>
+</FlexGroup>
+
+<PreviewComponent demoComponent={<BadgeDemo />} demoCodePath='BadgeDemo' />
+
+<FlexGroup>
+  ## Installation
+
+Copy and paste the following code into your project.
+
+<ComponentSource code='Badge' />
+
+Update the import paths to match your project setup.
+
+## Anatomy
+
+Import all parts and piece them together.
+
+<CodeBlock code={`import { Badge } from "@/components/ui/badge"`} />
+
+<CodeBlock
+  code={`<Badge
+    separation='shadow'
+    size='sm'
+    coloring='green'
+    shape='pill'
+    fill='muted'
+>
+    Label
+</Badge>`}
+/>
+</FlexGroup>

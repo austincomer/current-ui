@@ -1,0 +1,299 @@
+---
+metaTitle: Getting Started
+metaDescription: A quick tutorial to get you up and running with Current UI.
+---
+
+<FlexGroup>
+
+    # Getting Started
+    <Description>
+        A quick tutorial to get you up and running with Current UI.
+    </Description>
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ## Building Your UI Library
+
+    After completing the installation process, you are ready to start building
+    your UI library.
+
+    You have two options:
+
+    1. Download all the components and add them to your project.
+    2. Manually add the specific components you need.
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ## Downloading All Components
+
+    If you are starting a new project and want to have a complete library
+    to reference while building your project, downloading the entire UI
+    library is an excellent option.
+
+    Download the the components/UI folder to your computer.
+
+    <DownloadUiBUtton />
+
+    After downloading, simply drag and drop the file into your project's
+    components folder.
+
+    <NextImage alt='' src='/' />
+
+    Please refer to the documentation for each component as you use them.
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ## Manually Adding Components
+
+    Manually adding components as you need them is a great way to ensure
+    that your UI only contains the components you are actually using.
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={1}>Create your UI components folder</Step>
+
+    Create a components folder with a UI subfolder.
+
+    This is how I normal like to structure my components:
+
+    <CodeBlock
+    code={`├── app
+    │   ├── layout.tsx
+    │   └── page.tsx
+    ├── components
+    │   ├── ui
+    │   │   ├── alert-dialog.tsx
+    │   │   ├── button.tsx
+    │   │   ├── dropdown-menu.tsx
+    │   │   └── ...
+    │   ├── main-nav.tsx
+    │   ├── page-header.tsx
+    │   └── ...
+    ├── lib
+    │   └── utils.ts
+    ├── styles
+    │   └── globals.css
+    ├── next.config.js
+    ├── package.json
+    ├── postcss.config.js
+    ├── tailwind.config.js
+    └── tsconfig.json
+    `}
+    />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={2}>Select the component you would like to use</Step>
+
+    For this example we will be adding the <NextLink href='/docs/components/select'>Select</NextLink> component.
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={3}>
+        Create a new file inside your components/ui folder
+    </Step>
+
+    We’ll name this `Select.tsx`
+
+</FlexGroup>
+
+<FlexGroup>
+    <Step index={4}>
+        Follow the installation process for the specific component.
+    </Step>
+
+    For the Select component, first install the following dependencies:
+
+    <CodeBlock code={`npm install @radix-ui/react-collapsible`} />
+
+    Next, copy and paste the provided code into your `Select.tsx` file.
+
+    <CodeBlock code={`'use client'
+
+    import * as React from 'react'
+    import * as SelectPrimitive from '@radix-ui/react-select'
+    import { cva, type VariantProps } from 'class-variance-authority'
+    import { ChevronDown, Check } from 'lucide-react'
+
+    import { cn } from '@/lib/utils'
+
+    const Select = SelectPrimitive.Root
+
+    const SelectValue = SelectPrimitive.Value
+
+    const selectTriggerVariants = cva(
+    'flex w-full items-center justify-between gap-3 rounded-md border border-input px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+    {
+    variants: {
+    variant: {
+    default: 'bg-white data-[placeholder]:text-muted-foreground',
+    secondary:
+    'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+    ghost:
+    'border-none shadow-none hover:bg-accent hover:text-accent-foreground',
+    },
+    },
+    defaultVariants: {
+    variant: 'default',
+    },
+    }
+    )
+
+    interface SelectTriggerProps
+    extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>,
+    VariantProps<typeof selectTriggerVariants> {
+    hasIcon?: boolean | undefined
+    }
+
+    const SelectTrigger = React.forwardRef<
+    React.ElementRef<typeof SelectPrimitive.Trigger>,
+    SelectTriggerProps
+
+    > (({ className, variant, hasIcon, children, ...props }, ref) => (
+
+    {' '}
+    <SelectPrimitive.Trigger
+    ref={ref}
+    className={cn(selectTriggerVariants({ variant }), className)}
+    {...props}
+    >
+    {children}
+    {hasIcon && (
+        <SelectPrimitive.Icon asChild>
+        <ChevronDown strokeWidth='1.5' className='h-5 w-5 opacity-75' />
+        </SelectPrimitive.Icon>
+    )}
+    </SelectPrimitive.Trigger>
+    ))
+
+    const SelectContent = React.forwardRef<
+    React.ElementRef<typeof SelectPrimitive.Content>,
+    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
+
+    > (({ className, children, ...props }, ref) => (
+
+    {' '}
+    <SelectPrimitive.Portal>
+    <SelectPrimitive.Content
+        ref={ref}
+        className={cn(
+        'relative z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
+        className
+        )}
+        position='popper'
+        {...props}
+    >
+        <SelectPrimitive.Viewport className='h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)] p-1'>
+        {children}
+        </SelectPrimitive.Viewport>
+    </SelectPrimitive.Content>
+    </SelectPrimitive.Portal>
+    ))
+
+    const SelectLabel = React.forwardRef<
+    React.ElementRef<typeof SelectPrimitive.Label>,
+    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
+
+    > (({ className, children, ...props }, ref) => (
+
+    {' '}
+    <SelectPrimitive.Label
+    ref={ref}
+    className={cn('py-1.5 pl-8 pr-2 text-xs font-semibold', className)}
+    {...props}
+    >
+    {children}
+    </SelectPrimitive.Label>
+    ))
+
+    const SelectItem = React.forwardRef<
+    React.ElementRef<typeof SelectPrimitive.Item>,
+    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> & {
+    hasIndicator?: boolean | undefined
+    }
+
+    > (({ className, children, hasIndicator, ...props }, ref) => {
+    > return (
+
+        <SelectPrimitive.Item
+        ref={ref}
+        className={cn(
+            'relative flex w-full cursor-pointer select-none items-center gap-5 rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[state=checked]:font-bold data-[disabled]:opacity-50',
+            hasIndicator && 'data-[state=checked]:font-normal',
+            className
+        )}
+        {...props}
+        >
+        <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+        {hasIndicator && (
+            <span className='absolute left-2 flex h-3.5 w-3.5 items-center justify-center'>
+            <SelectPrimitive.ItemIndicator>
+                <Check className='h-4 w-4' />
+            </SelectPrimitive.ItemIndicator>
+            </span>
+        )}
+        </SelectPrimitive.Item>
+
+    )
+    })
+
+    const SelectGroup = React.forwardRef<
+    React.ElementRef<typeof SelectPrimitive.Group>,
+    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Group>
+
+    > (({ className, children, ...props }, ref) => (
+
+    {' '}
+    <SelectPrimitive.Group ref={ref} className={cn('py-1', className)} {...props}>
+    {children}
+    </SelectPrimitive.Group>
+    ))
+
+    const SelectSeparator = React.forwardRef<
+    React.ElementRef<typeof SelectPrimitive.Separator>,
+    React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
+
+    > (({ className, children, ...props }, ref) => (
+
+    {' '}
+    <SelectPrimitive.Separator
+    ref={ref}
+    className={cn('my-1 h-px bg-muted', className)}
+    {...props}
+    />
+    ))
+
+    export {
+    Select,
+    SelectTrigger,
+    SelectValue,
+    SelectContent,
+    SelectGroup,
+    SelectLabel,
+    SelectItem,
+    SelectSeparator,
+    }`} />
+
+    All that's left to do is update the import paths to match your
+    project's setup.
+
+</FlexGroup>
+
+<FlexGroup>
+
+    If you would like to gain a better understanding of the components, please
+    refer to our <NextLink href='docs/guides/theming'>guide</NextLink>
+
+</FlexGroup>

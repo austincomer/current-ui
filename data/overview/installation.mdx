@@ -1,0 +1,394 @@
+---
+metaTitle: Installation
+metaDescription: How to install dependencies and structure your app.
+---
+
+<FlexGroup>
+
+    # Intallation
+    <Description>
+        How to install dependencies and structure your app.
+    </Description>
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ## Frameworks
+
+    Current UI is current built to be used in Next.JS / React projects
+
+
+    This installation process will be focused on setting up or app the
+    necessary dependencies / files to your project.
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={1}>Create your NEXT.JS project</Step>
+
+    Start by creating a new Next.js project using create-next-app:
+
+    <CodeBlock
+    code={`npx create-next-app@latest my-app --typescript --tailwind --eslint`}
+    />
+
+    <ExternalLink
+        href='https://nextjs.org/docs/getting-started/installation'
+        title='Next.JS Documentation'
+    />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ### Typescript
+
+    The Current UI components are written in TypeScript. Using TypeScript
+    offers several benefits, including improved code maintainability,
+    reduced errors, and better IDE support for autocompletion and type
+    checking. This is the optimal approach for utilizing our components.
+    However, we are exploring the possibility of extending support for
+    JavaScript components in the future.
+
+    <ExternalLink
+        href='https://www.typescriptlang.org/download'
+        title='Typescript Documentation'
+    />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ### Tailwind
+
+    The current UI uses Tailwind CSS for component styling. However, we
+    are exploring the possibility of adding support for CSS and SASS in
+    the future to expand styling preferences.
+
+    <ExternalLink
+        href='https://tailwindcss.com/docs/installation'
+        title='Tawilwind Documentation'
+    />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={2}>Global CSS</Step>
+
+    Current UI uses CSS variables to maintain a centralized design system,
+    making it easy to implement future changes.
+
+
+    <NextLink href='/docs/guides/theming'>Learn more about our theming</NextLink>
+
+    Copy and paste the following code into your `global.css` file.
+
+    <CodeBlock code={`@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 240 10% 6%;
+
+        --muted: 240 5% 96%;
+        --muted-foreground: 240 4% 46%;
+
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 6%;
+
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 6%;
+
+        --border: 240 6% 90%;
+        --input: 240 6% 90%;
+
+        --primary: 240 6% 10%;
+        --primary-foreground: 0 0% 98%;
+
+        --secondary: 240 5% 96%;
+        --secondary-foreground: 240 6% 10%;
+
+        --accent: 240 5% 96%;
+        --accent-foreground: ;
+
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+
+        --ring: 240 5% 65%;
+
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        --background: 240 10% 6%;
+        --foreground: 0 0% 98%;
+
+        --muted: 240 4% 15.9%;
+        --muted-foreground: 240 5% 65%;
+
+        --popover: 240 10% 6%;
+        --popover-foreground: 0 0% 98%;
+
+        --card: 240 10% 6%;
+        --card-foreground: 0 0% 98%;
+
+        --border: 240 4% 16%;
+        --input: 240 4% 16%;
+
+        --primary: 0 0% 98%;
+        --primary-foreground: 240 6% 10%;
+
+        --secondary: 240 4% 16%;
+        --secondary-foreground: 0 0% 98%;
+
+        --accent: 240 4% 16%;
+        --accent-foreground: ;
+
+        --destructive: 0 60% 50%;
+        --destructive-foreground: 0 86% 97%;
+
+        --ring: 240 3.7% 15.9%;
+    }
+}
+`} />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={3}>Tailwind Config</Step>
+
+    Now that we have added all our CSS variables to our `global.css` file we need to update our
+    Tailwind configuration.
+
+    Copy and paste the following code into your `tailwind.config.js` file.
+
+    <CodeBlock code={`const { fontFamily } = require('tailwindcss/defaultTheme')
+
+    /** @type {import('tailwindcss').Config} */
+    module.exports = {
+    darkMode: 'class',
+    content: [
+        './pages/**/*.{js,ts,jsx,tsx,mdx}',
+        './components/**/*.{js,ts,jsx,tsx,mdx}',
+        './app/**/*.{js,ts,jsx,tsx,mdx}',
+    ],
+    theme: {
+        container: {
+        center: true,
+        padding: '2rem',
+        screens: {
+            '2xl': '1400px',
+        },
+        },
+        screens: {
+        lg: '900px',
+        },
+        extend: {
+        fontFamily: {
+            sans: ['var(--font-sans)', ...fontFamily.sans],
+            benzin: ['benzin'],
+        },
+        colors: {
+            border: 'hsl(var(--border))',
+            input: 'hsl(var(--input))',
+            ring: 'hsl(var(--ring))',
+            background: 'hsl(var(--background))',
+            foreground: 'hsl(var(--foreground))',
+            primary: {
+            DEFAULT: 'hsl(var(--primary))',
+            foreground: 'hsl(var(--primary-foreground))',
+            },
+            secondary: {
+            DEFAULT: 'hsl(var(--secondary))',
+            foreground: 'hsl(var(--secondary-foreground))',
+            },
+            destructive: {
+            DEFAULT: 'hsl(var(--destructive))',
+            foreground: 'hsl(var(--destructive-foreground))',
+            },
+            muted: {
+            DEFAULT: 'hsl(var(--muted))',
+            foreground: 'hsl(var(--muted-foreground))',
+            },
+            accent: {
+            DEFAULT: 'hsl(var(--accent))',
+            foreground: 'hsl(var(--accent-foreground))',
+            },
+            popover: {
+            DEFAULT: 'hsl(var(--popover))',
+            foreground: 'hsl(var(--popover-foreground))',
+            },
+            card: {
+            DEFAULT: 'hsl(var(--card))',
+            foreground: 'hsl(var(--card-foreground))',
+            },
+        },
+        borderRadius: {
+            lg: 'var(--radius)',
+            md: 'calc(var(--radius) - 2px)',
+            sm: 'calc(var(--radius) - 4px)',
+        },
+        keyframes: {
+            'accordion-down': {
+            from: { height: 0 },
+            to: { height: 'var(--radix-accordion-content-height)' },
+            },
+            'accordion-up': {
+            from: { height: 'var(--radix-accordion-content-height)' },
+            to: { height: 0 },
+            },
+            'slide-from-left': {
+            '0%': {
+                transform: 'translateX(-100%)',
+            },
+            '100%': {
+                transform: 'translateX(0)',
+            },
+            },
+            'slide-to-left': {
+            '0%': {
+                transform: 'translateX(0)',
+            },
+            '100%': {
+                transform: 'translateX(-100%)',
+            },
+            },
+        },
+        animation: {
+            'slide-from-left':
+            'slide-from-left 0.3s cubic-bezier(0.82, 0.085, 0.395, 0.895)',
+            'slide-to-left':
+            'slide-to-left 0.25s cubic-bezier(0.82, 0.085, 0.395, 0.895)',
+            'accordion-down': 'accordion-down 0.2s ease-out',
+            'accordion-up': 'accordion-up 0.2s ease-out',
+        },
+        },
+    },
+    plugins: [],
+    }`} />
+
+    <ExternalLink
+        href='https://tailwindcss.com/docs/configuration'
+        title='Tailwind Configuration Documentation'
+    />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={4}>Classname Helper Function Dependencies</Step>
+
+    Most of our components rely on a `cn` helper function to merge classnames. This allows us to merge styles
+    directly onto the base component with added styles elsewhere where we
+    use that component.
+
+    Intall the following dependencies:
+
+    <CodeBlock
+        code={`npm i --class-variance-authority --tailwind-merge --clsx`}
+    />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ### Class Variance Authority'
+
+    Class Variance Authority, or `cva`, is
+    used to easily manage different component style variants. We use the `cva` function to add multiple style
+    variants to the base component. This allows you to easily apply
+    different styles in multiple locations, resulting in improved
+    efficiency and cohesiveness.
+
+    <ExternalLink href='https://cva.style/docs' title='CVA Documentation' />
+
+    When using `cva` with Tailwind CSS, here
+    are some additional (optional) steps to get the most out of  `cva`: You can enable autocompletion
+    inside `cva`.
+
+    <ExternalLink
+        href='https://cva.style/docs/getting-started/installation'
+        title='CVA IntelliSense Documentation'
+    />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ### Tailwind Merge
+
+    Tailwind Merge is a utility function to efficiently merge Tailwind
+    CSS classes in JS without style conflicts.
+
+    <ExternalLink href='https://www.npmjs.com/package/tailwind-merge' title='Tailwind Merge' />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    ### clsx
+
+    A tiny (234B) utility for constructing className strings
+    conditionally.
+
+    <ExternalLink href='https://github.com/lukeed/clsx' title='clsx Merge' />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={5}>Classname Helper Function</Step>
+
+    Now that we have all the necessary dependencies installed, we can set
+    up our `cn` helper function.
+
+    Inside your `lib` folder, paste the follwing code into your `utils.ts` file.
+
+    <CodeBlock code={`import { clsx, type ClassValue } from 'clsx'
+
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+return twMerge(clsx(inputs))
+}`} />
+
+</FlexGroup>
+
+<FlexGroup>
+
+    <Step index={6}>Lucid Icons</Step>
+
+    Some of the components use Lucid Icons. However, as it is your code, you can
+    easily use any icon library you prefer. If you would like to use Lucid's
+    icons for an out-of-the-box experience, install the following
+    dependency;
+
+    <CodeBlock code={`npm install lucide-react`} />
+
+    <ExternalLink href='https://lucide.dev/guide/packages/lucide-react' title='Lucid Icons Documentation' />
+
+</FlexGroup>
+
+### Optional Installs
+
+<FlexGroup>
+
+    #### Automatic Class Sorting with Prettier
+
+    A Prettier plugin for Tailwind CSS that automatically sorts classes based on
+    the recommended class order.
+
+    <ExternalLink
+    href='https://github.com/tailwindlabs/prettier-plugin-tailwindcss'
+    title='Prettier Tailwind Plugin Documentation'
+    />
+
+</FlexGroup>
+
+{/* <Installation /> */}

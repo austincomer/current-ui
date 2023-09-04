@@ -1,0 +1,52 @@
+---
+metaTitle: Tabs - Current UI
+metaDescription: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+name: Tabs
+---
+
+<FlexGroup>
+  # Tabs
+
+  <Description
+    hasRadixLink={true}
+    link='https://www.radix-ui.com/primitives/docs/components/tabs'
+  >
+    A set of layered sections of content—known as tab panels—that are displayed one at a time.
+  </Description>
+</FlexGroup>
+
+<PreviewComponent demoComponent={<TabsDemo />} demoCodePath='TabsDemo' />
+
+<FlexGroup>
+  ## Installation
+
+  Install the following dependencies:
+
+  <CodeBlock code={`npm install @radix-ui/react-tabs`} />
+
+  Copy and paste the following code into your project.
+
+  <ComponentSource code='Tabs' />
+
+  Update the import paths to match your project setup.
+  
+</FlexGroup>
+
+<FlexGroup>
+## Anatomy
+
+Import all parts and piece them together.
+
+<CodeBlock
+code={`import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/Tabs'`}
+/>
+
+<CodeBlock code={`<Tabs defaultValue='tab1'>
+  <TabsList>
+    <TabsTrigger value='tab1'>Tab 1</TabsTrigger>
+    <TabsTrigger value='tab2'>Tab 2</TabsTrigger>
+  </TabsList>
+  <TabsContent value='tab1'>Tab 1 Content</TabsContent>
+  <TabsContent value='tab2'>Tab 2 Content</TabsContent>
+</Tabs>`} />
+</FlexGroup>
