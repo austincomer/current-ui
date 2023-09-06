@@ -3,8 +3,31 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'regular';
-  src: url('/fonts/benzin-regular.ttf');
+  font-family: 'Benzin';
+  src: url('/fonts/Benzin-Regular.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Benzin';
+  src: url('/fonts/Benzin-Medium.woff') format('woff');
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Benzin';
+  src: url('/fonts/Benzin-Bold.woff') format('woff');
+  font-style: normal;
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'Benzin';
+  src: url('/fonts/Benzin-ExtraBold.woff') format('woff');
+  font-style: normal;
+  font-weight: 900;
 }
 
 @layer base {
