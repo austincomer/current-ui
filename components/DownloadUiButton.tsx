@@ -1,9 +1,8 @@
 import DownloadUiBUttonClient from './DownloadUIButtonClient'
-// import { fetchUIFolderData } from '@/lib/fetchUIFolderData'
+import { fetchUIFolderData } from '@/lib/fetchUIFolderData'
 
 export default function DownloadUiBUtton() {
-  // const data = fetchUIFolderData()
-  const data = 'hello'
+  const data = fetchUIFolderData()
 
   return (
     <DownloadUiBUttonClient fileData={data}>

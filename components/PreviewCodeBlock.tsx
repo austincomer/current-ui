@@ -10,7 +10,6 @@ import {
   CollapsibleTrigger,
   CollapsibleContent,
 } from './ui/Collapsible'
-import CopyToClipboard from './ui/CopyToClipboard'
 
 type PreviewCodeBlockProps = {
   demoCode: string
