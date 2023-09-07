@@ -1,8 +1,9 @@
 {
   "name": "ui-library",
   "version": "0.1.0",
-  "type": "commonjs",
+  "type": "module",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -28,6 +29,7 @@
     "esbuild": "^0.18.20",
     "eslint": "8.45.0",
     "eslint-config-next": "^13.4.19",
+    "file-saver": "^2.0.5",
     "glob": "^10.3.3",
     "gray-matter": "^4.0.3",
     "jszip": "^3.10.1",
@@ -36,6 +38,7 @@
     "next": "^13.4.19",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.2.1",
+    "nodemon": "^3.0.1",
     "postcss": "8.4.27",
     "prism-react-renderer": "^2.0.6",
     "prismjs": "^1.29.0",

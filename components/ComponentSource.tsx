@@ -1,4 +1,4 @@
-import { fetchComponentCode } from '@/lib/fetchComponentSource.'
+import { fetchComponentCode } from '@/lib/fetchComponentSource'
 import CodeBlock from './CodeBlock'
 
 export default function ComponentSource({ code }: { code: string }) {
