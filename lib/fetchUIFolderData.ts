@@ -1,12 +1,11 @@
-import { Console } from 'console'
 import fs from 'fs'
 import path from 'path'
 
 const ROOT_PATH = process.cwd()
 export const DATA_PATH = path.join(ROOT_PATH, 'registry/ui')
 
-export async function fetchUIFolderData() {
-  const filesData = []
+export function fetchUIFolderData() {
+  const filesData: { fileName: string, fileData: string }[] = []
 
   const files = fs.readdirSync(
     '/Users/austincomer/Desktop/DEV/current-ui/registry/ui'
@@ -17,13 +16,7 @@ export async function fetchUIFolderData() {
 
     const filePath = path.join(DATA_PATH, file)
 
-    const fileData = fs.readFileSync(filePath, 'utf8', (err, data) => {
-      if (err) {
-        console.error(err)
-        return
-      }
-      return data
-    })
+    const fileData = fs.readFileSync(filePath, 'utf8')
 
     return filesData.push({
       fileName: fileName,
@@ -33,3 +26,4 @@ export async function fetchUIFolderData() {
 
   return JSON.stringify(filesData)
 }
+

@@ -36,9 +36,9 @@
     "app/docs/[...slug]",
     "lib/downloadUi.js",
     "lib/fetchComponentSource.ts",
-    "lib/syncComponentFiles.js",
-    "lib/createZip.ts",
+    "lib/syncComponentFiles.ts",
+    "lib/generateZip.ts",
     "app/api/download-components/route.ts"
-, "lib/fetchUIFolderData.js"  ],
+, "lib/fetchUIFolderData.ts"  ],
   "exclude": ["node_modules"]
 }

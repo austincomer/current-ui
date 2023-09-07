@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { buttonVariants } from './ui/Button'
-import { createZip } from '@/lib/createZip'
+import { generateZip } from '@/lib/generateZip'
 
 type DownloadUiBUttonClientProps = {
   fileData: string
@@ -23,7 +23,7 @@ export default function DownloadUiBUttonClient({
         }),
         'w-fit'
       )}
-      onClick={() => createZip(fileData)}
+      onClick={() => generateZip(fileData)}
     >
       {children}
     </button>
