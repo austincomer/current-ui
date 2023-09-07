@@ -1,6 +1,6 @@
-const fs = require('fs')
-const path = require('path')
-const chokidar = require('chokidar')
+import fs from 'fs'
+import path from 'path'
+import chokidar from 'chokidar'
 
 const ROOT_PATH = process.cwd()
 
@@ -9,7 +9,7 @@ const sourceDirectoryUI = path.join(ROOT_PATH, 'components/ui')
 const destinationDirectoryDemos = path.join(ROOT_PATH, 'registry/demos')
 const destinationDirectoryUI = path.join(ROOT_PATH, 'registry/ui')
 
-function copyFolderRecursive(sourceDir, destinationDir) {
+function copyFolderRecursive(sourceDir: string, destinationDir: string) {
   // Watch for changes in the source directory
   const watcher = chokidar.watch(sourceDir, { persistent: true })
 

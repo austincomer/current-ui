@@ -1,21 +1,12 @@
-'use client'
-
-import { cn } from '@/lib/utils'
-import { buttonVariants } from './ui/Button'
+import DownloadUiBUttonClient from './DownloadUIButtonClient'
+import { fetchUIFolderData } from '@/lib/fetchUIFolderData'
 
 export default function DownloadUiBUtton() {
+  const data = fetchUIFolderData()
+
   return (
-    <button
-      className={cn(
-        buttonVariants({
-          variant: 'default',
-          size: 'sm',
-          shape: 'rounded',
-        }),
-        'w-fit'
-      )}
-    >
+    <DownloadUiBUttonClient fileData={data}>
       Download Components
-    </button>
+    </DownloadUiBUttonClient>
   )
 }

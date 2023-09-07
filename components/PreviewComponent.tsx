@@ -3,7 +3,7 @@ import {
   fetchDemoCode,
   fetchGlobalsCode,
   fetchTailwindCode,
-} from '@/lib/fetchComponentSource.'
+} from '@/lib/fetchComponentSource'
 
 type PreviewComponentProps = {
   demoComponent: React.ReactNode
