@@ -7,14 +7,14 @@ type NextImageProps = {
 
 export default function NextImage({ alt, src }: NextImageProps) {
   return (
-    <div className='relative h-[500px] w-full'>
+    <div className=' w-full h-full'>
       <Image
         src={src}
         alt={alt}
-        // width={500}
-        // height={500}
-        fill={true}
-        className='rounded-md bg-gray-100'
+        width={700}
+        height={700}
+        // fill={true}
+        className='rounded-md object-contain w-full'
       />
     </div>
   )
