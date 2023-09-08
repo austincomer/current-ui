@@ -11,8 +11,8 @@ export default function NextImage({ alt, src }: NextImageProps) {
       <Image
         src={src}
         alt={alt}
-        width={1920}
-        height={1080}
+        width={700}
+        height={700}
         // fill={true}
         className='rounded-md object-contain w-full'
       />
