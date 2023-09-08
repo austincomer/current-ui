@@ -12,7 +12,7 @@ export default function Community() {
             and tips related to Current UI, subscribe to our newsletter
           </p>
           <a
-            href='https://twitter.com/austinmcomer'
+            href='https://substack.com/profile/106534477-austin-comer?utm_source=profile-page'
             target='_blank'
             rel='noopener noreferrer'
             className='text-blue-700 hover:underline dark:text-blue-400'
@@ -44,7 +44,7 @@ export default function Community() {
             GitHub repository.
           </p>
           <a
-            href='https://twitter.com/austinmcomer'
+            href='https://github.com/austincomer/current-ui'
             target='_blank'
             rel='noopener noreferrer'
             className='text-blue-600 hover:underline dark:text-blue-400'
