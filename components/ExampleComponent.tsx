@@ -26,47 +26,38 @@ export default function ExampleComponent({ variantName, variantProps }) {
           ''
         )}
       </div>
-      <ExampleCodeBlock
-        setActiveProp={setActiveProp}
-        variantName={variantName}
-        variantProps={variantProps}
-      />
+
+      <Tabs
+        defaultValue={variantProps[0]}
+        orientation='vertical'
+        className='border-t border-t-border'
+      >
+        <TabsList aria-label='tabs example'>
+          {variantProps.map((prop) => {
+            return (
+              <TabsTrigger value={prop} asChild>
+                <button onClick={() => setActiveProp(prop)}>{prop}</button>
+              </TabsTrigger>
+            )
+          })}
+        </TabsList>
+
+        <div className='relative overflow-hidden'>
+          {variantProps.map((prop) => {
+            return (
+              <TabsContent value={prop}>
+                <CodeBlock
+                  code={
+                    prop === 'default'
+                      ? `<Button>default</Button>`
+                      : `<Button ${variantName}='${prop}'>${prop}</Button>`
+                  }
+                />
+              </TabsContent>
+            )
+          })}
+        </div>
+      </Tabs>
     </div>
-  )
-}
-
-export function ExampleCodeBlock({ setActiveProp, variantName, variantProps }) {
-  return (
-    <Tabs
-      defaultValue={variantProps[0]}
-      orientation='vertical'
-      className='border-t border-t-border'
-    >
-      <TabsList aria-label='tabs example'>
-        {variantProps.map((prop) => {
-          return (
-            <TabsTrigger value={prop} asChild>
-              <button onClick={() => setActiveProp(prop)}>{prop}</button>
-            </TabsTrigger>
-          )
-        })}
-      </TabsList>
-
-      <div className='relative overflow-hidden'>
-        {variantProps.map((prop) => {
-          return (
-            <TabsContent value={prop}>
-              <CodeBlock
-                code={
-                  prop === 'default'
-                    ? `<Button>default</Button>`
-                    : `<Button ${variantName}='${prop}'>${prop}</Button>`
-                }
-              />
-            </TabsContent>
-          )
-        })}
-      </div>
-    </Tabs>
   )
 }
