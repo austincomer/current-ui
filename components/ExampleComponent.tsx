@@ -6,7 +6,15 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/Tabs'
 import CodeBlock from './CodeBlock'
 import { Button } from './ui/Button'
 
-export default function ExampleComponent({ variantName, variantProps }) {
+type ExampleComponentProps = {
+  variantName: string
+  variantProps: string[]
+}
+
+export default function ExampleComponent({
+  variantName,
+  variantProps,
+}: ExampleComponentProps) {
   const [activeProp, setActiveProp] = useState('')
 
   useEffect(() => {
