@@ -17,6 +17,7 @@ import Step from '@/components/Step'
 import NextLink from '@/components/NextLink'
 import ExternalLink from '@/components/ExternalLink'
 import Community from '@/components/Community'
+import ExampleComponent from '@/components/ExampleComponent'
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
@@ -65,6 +66,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     NextLink,
     ExternalLink,
     Community,
+    ExampleComponent,
     ...components,
   }
 }

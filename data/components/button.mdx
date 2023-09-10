@@ -35,3 +35,36 @@ Import all parts and piece them together.
   code={`<Link className={buttonVariants({ variant: "outline" })}>Click here</Link>`}
 />
 </FlexGroup>
+
+<FlexGroup>
+## Props
+
+### Variant
+
+<ExampleComponent
+  variantName='variant'
+  variantProps={[
+    'default',
+    'secondary',
+    'outline',
+    'ghost',
+    'link',
+    'destructive',
+  ]}
+/>
+
+### Shape
+
+<ExampleComponent
+  variantName='shape'
+  variantProps={['square', 'rounded', 'pill']}
+/>
+
+### Size
+
+<ExampleComponent
+  variantName='size'
+  variantProps={['default', 'xs', 'sm', 'lg', 'xl', 'icon']}
+/>
+
+</FlexGroup>
