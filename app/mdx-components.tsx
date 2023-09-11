@@ -33,8 +33,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children }) => (
       <h1 className='text-3xl font-bold lg:text-4xl'>{children}</h1>
     ),
-    h2: ({ children }) => <h2 className='text-2xl font-bold'>{children}</h2>,
-    h3: ({ children }) => <h3 className='text-xl font-semibold'>{children}</h3>,
+    h2: ({ children }) => (
+      <h2 className='text-xl font-bold lg:text-2xl'>{children}</h2>
+    ),
+    h3: ({ children }) => <h3 className='text-lg lg:text-xl font-semibold'>{children}</h3>,
     h4: ({ children }) => <h4 className='text-lg font-medium'>{children}</h4>,
     p: ({ children }) => <p className='text-base'>{children}</p>,
     ol: ({ children }) => (
