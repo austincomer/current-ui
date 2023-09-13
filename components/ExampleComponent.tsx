@@ -22,38 +22,44 @@ export default function ExampleComponent({
   }, [])
 
   return (
-    <div className='rounded-lg border border-border bg-background'>
-      <div className='flex items-center justify-center px-5 py-10 text-sm'>
-        {variantName === 'variant' ? (
-          <Button variant={activeProp}>{activeProp}</Button>
-        ) : variantName === 'shape' ? (
-          <Button shape={activeProp}>{activeProp}</Button>
-        ) : variantName === 'size' ? (
-          <Button size={activeProp}>{activeProp}</Button>
-        ) : (
-          ''
-        )}
-      </div>
+    <div className=''>
 
       <Tabs
         defaultValue={variantProps[0]}
         orientation='vertical'
-        className='border-t border-t-border'
+        className='bg-background'
       >
-        <TabsList aria-label='tabs example'>
+        <TabsList aria-label='tabs example' className='border-none'>
           {variantProps.map((prop) => {
             return (
-              <TabsTrigger value={prop} asChild>
+              <TabsTrigger
+                value={prop}
+                asChild
+                className='text-xs'
+                variant='button'
+              >
                 <button onClick={() => setActiveProp(prop)}>{prop}</button>
               </TabsTrigger>
             )
           })}
         </TabsList>
 
-        <div className='relative overflow-hidden'>
+        <div className='relative overflow-hidden rounded-lg border border-border'>
+          <div className='flex items-center justify-center px-5 py-12 text-sm'>
+            {variantName === 'variant' ? (
+              <Button variant={activeProp}>{activeProp}</Button>
+            ) : variantName === 'shape' ? (
+              <Button shape={activeProp}>{activeProp}</Button>
+            ) : variantName === 'size' ? (
+              <Button size={activeProp}>{activeProp}</Button>
+            ) : (
+              ''
+            )}
+          </div>
+
           {variantProps.map((prop) => {
             return (
-              <TabsContent value={prop}>
+              <TabsContent value={prop} className='border-border border-t'>
                 <CodeBlock
                   code={
                     prop === 'default'

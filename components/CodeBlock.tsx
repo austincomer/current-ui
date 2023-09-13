@@ -16,7 +16,7 @@ export default function CodeBlock({ code }: CodeBlockProps) {
   }, [])
 
   return (
-    <div className='relative my-2'>
+    <div className='relative'>
       <div className='scrollbar-light max-h-[500px] overflow-y-auto rounded-lg bg-primary-foreground'>
         <pre>
           <code className='language-typescript'>{code}</code>
