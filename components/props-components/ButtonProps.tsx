@@ -99,8 +99,12 @@ export default function ButtonProps({
               <TabsContent value={prop} className='border-t border-border'>
                 <CodeBlock
                   code={
-                    prop === 'default'
+                    variantName === 'size' && prop === 'default'
+                      ? `<Button>default button</Button>`
+                      : prop === 'default'
                       ? `<Button>default</Button>`
+                      : variantName === 'size'
+                      ? `<Button ${variantName}='${prop}'>${prop} button</Button>`
                       : `<Button ${variantName}='${prop}'>${prop}</Button>`
                   }
                 />
