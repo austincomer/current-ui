@@ -12,12 +12,14 @@ import {
 } from './ui/Collapsible'
 
 type PreviewCodeBlockProps = {
+  componentName: string
   demoCode: string
   demoGlobals: string
   demoTailwind: string
 }
 
 export default function PreviewCodeBlock({
+  componentName,
   demoCode,
   demoGlobals,
   demoTailwind,
@@ -45,7 +47,7 @@ export default function PreviewCodeBlock({
         className='border-t border-t-border'
       >
         <TabsList aria-label='tabs example'>
-          <TabsTrigger value='tab1'>index.tsx</TabsTrigger>
+          <TabsTrigger value='tab1'>{`${componentName}.tsx`}</TabsTrigger>
           <TabsTrigger value='tab2'>global.css</TabsTrigger>
           <TabsTrigger value='tab3'>tailwind.config.js</TabsTrigger>
         </TabsList>
