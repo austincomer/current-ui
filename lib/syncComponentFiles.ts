@@ -37,7 +37,7 @@ function copyFolderRecursive(sourceDir: string, destinationDir: string) {
     console.log(`New file ${sourceFilePath} has been added.`)
   })
 
-  watcher.on('unlink', (sourceFilePath) => {
+  watcher.on('unlink', (sourceFilePath) => {3
     // Calculate the destination file path
     const destinationFilePath = path.join(
       destinationDir,
