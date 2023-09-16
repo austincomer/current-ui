@@ -6,11 +6,13 @@ import {
 } from '@/lib/fetchComponentSource'
 
 type PreviewComponentProps = {
+  componentName: string
   demoComponent: React.ReactNode
   demoCodePath: string
 }
 
 export default function PreviewComponent({
+  componentName,
   demoComponent,
   demoCodePath,
 }: PreviewComponentProps) {
@@ -24,6 +26,7 @@ export default function PreviewComponent({
         {demoComponent}
       </div>
       <PreviewCodeBlock
+        componentName={componentName}
         demoCode={demoCode}
         demoGlobals={demoGlobals}
         demoTailwind={demoTailwind}
