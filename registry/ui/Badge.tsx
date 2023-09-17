@@ -22,8 +22,8 @@ const badgeVariants = cva('inline-flex items-center text-xs font-medium', {
     },
     coloring: {
       default: 'bg-primary text-primary-foreground',
-      gray: 'bg-[#E7E8E9] text-[#7D7C78]',
       destructive: 'bg-destructive text-[#fff]',
+      gray: 'bg-[#E7E8E9] text-[#7D7C78]',
       yellow: 'bg-[#FAF0D1] text-[#CB9C01]',
       green: 'bg-[#D7EAE6] text-[#0D685C]',
       blue: 'bg-[#D7E8EF] text-[#096086]',
@@ -33,7 +33,7 @@ const badgeVariants = cva('inline-flex items-center text-xs font-medium', {
     separation: {
       none: '',
       outline: 'outline outline-2 outline-background',
-      shadow: 'shadow-primary/15 shadow-md',
+      shadow: 'shadow-primary/30 shadow-md',
     },
   },
   compoundVariants: [
