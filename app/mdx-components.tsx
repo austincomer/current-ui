@@ -18,6 +18,7 @@ import NextLink from '@/components/NextLink'
 import ExternalLink from '@/components/ExternalLink'
 import Community from '@/components/Community'
 import ButtonProps from '@/components/props-components/ButtonProps'
+import BadgeProps from '@/components/props-components/BadgeProps'
 
 
 // This file allows you to provide custom React components
@@ -72,6 +73,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ExternalLink,
     Community,
     ButtonProps,
+    BadgeProps,
     ...components,
   }
 }
