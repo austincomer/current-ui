@@ -103,6 +103,8 @@ export default function ButtonProps({
                       ? `<Button>default button</Button>`
                       : prop === 'default'
                       ? `<Button>default</Button>`
+                      : variantName === 'size' && prop === 'icon'
+                      ? `<Button ${variantName}='${prop}'><Expand strokeWidth={1.5} size={16} /></Button>`
                       : variantName === 'size'
                       ? `<Button ${variantName}='${prop}'>${prop} button</Button>`
                       : `<Button ${variantName}='${prop}'>${prop}</Button>`
