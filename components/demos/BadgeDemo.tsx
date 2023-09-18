@@ -5,7 +5,7 @@ import { Badge } from '../ui/Badge'
 export default function BadgeDemo() {
   return (
     <div className='flex flex-col items-center justify-center gap-5 lg:flex-row'>
-      <Badge shape='pill'>Label</Badge>
+      <Badge shape='pill'>Badge</Badge>
       <Badge coloring='gray' shape='pill'>
         Badge
       </Badge>
